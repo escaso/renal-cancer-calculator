@@ -16,25 +16,33 @@
 
         <h1>Renal Cancer Calculator</h1>
 
-        <select id="Localization"></select>
+        <label for="tumorGrade">Tumor Grade</label>
+        <select id="tumorGrade"></select>
 
-        <select id="Tumor Grade"></select>
+        <label for="tnmStage">TNM Stage</label>
+        <select id="tnmStage"></select>
 
-        <select id="TNM Stage"></select>
+        <label for="localization">Localization</label>
+        <select id="localization"></select>
 
+        <label for="group">Group</label>
+        <select id="group"></select>
+
+        <label for="age">Age</label>
         <input
-            id="Age"
+            id="age"
             type="number"
             placeholder="Age"
         >
 
+        <label for="sarcomDiff">Sarcomatoidal Difference</label>
         <input
-            id="Sarcomatoidal Diff"
+            id="sarcomDiff"
             type="number"
             step="any"
             min="0"
             max="1"
-            placeholder="Sarcomatoidal Diff (between 0 and 1)"
+            placeholder="between 0 and 1"
         >
 
         <button id="submit">

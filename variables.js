@@ -40,7 +40,7 @@ const TnmStage = Object.freeze({
 function populateDropdown(selectId, enumOptions){
     const select = document.getElementById(selectId);
 
-    for (key in enumOptions) {
+    for (const key in enumOptions) {
         const option = document.createElement("option");
         const value = enumOptions[key];
         option.value = typeof value === "object" ? key : value;
@@ -49,6 +49,6 @@ function populateDropdown(selectId, enumOptions){
     }
 }
 
-populateDropdown("Localization", Localizations);
-populateDropdown("Tumor Grade", TumorGrade);
-populateDropdown("TNM Stage", TnmStage);
+populateDropdown("localization", Localizations);
+populateDropdown("tumorGrade", TumorGrade);
+populateDropdown("tnmStage", TnmStage);
