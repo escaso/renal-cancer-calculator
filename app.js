@@ -64,9 +64,9 @@ populateDropdown("nStage", NStage);
 document.getElementById("submit").addEventListener("click", () => {
     const localization = document.getElementById("localization").value;
     const grade = document.getElementById("tumorGrade").value;
-    const sarcomatoid = document.getElementById("sarcomDiff");
+    const sarcomatoid = document.getElementById("sarcomDiff").value;
     const n = document.getElementById("nStage").value;
-    const age = document.getElementById("age");
+    const age = document.getElementById("age").value;
     const t = document.getElementById("tnmStage").value;
 
     // validate all fields are filled
@@ -75,7 +75,7 @@ document.getElementById("submit").addEventListener("click", () => {
         return;
     }
 
-    const resultGroup = calculate(localization=localization, grade=grade, sarcomatoid=sarcomatoid, n=n, age=age, t=t);
+    const resultGroup = calculate(localization, grade, sarcomatoid, n, age, t);
 
     // hide the form, show the result
     document.querySelector(".calculator").innerHTML = `
