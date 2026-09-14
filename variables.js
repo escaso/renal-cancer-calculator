@@ -49,7 +49,6 @@ function populateDropdown(selectId, enumOptions){
     }
 }
 
-populateDropdown("localization", Localizations);
-populateDropdown("tumorGrade", TumorGrade);
-populateDropdown("tnmStage", TnmStage);
-populateDropdown("group", Groups);
+populateDropdown("Localization", Localizations);
+populateDropdown("Tumor Grade", TumorGrade);
+populateDropdown("TNM Stage", TnmStage);
