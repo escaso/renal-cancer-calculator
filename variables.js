@@ -40,6 +40,11 @@ export const TnmStage = Object.freeze({
 export function populateDropdown(selectId, enumOptions){
     const select = document.getElementById(selectId);
 
+    const defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.textContent = "-- Select one --";
+    select.appendChild(defaultOption);
+    
     for (const key in enumOptions) {
         const option = document.createElement("option");
         const value = enumOptions[key];
