@@ -48,7 +48,3 @@ function populateDropdown(selectId, enumOptions){
         select.appendChild(option);
     }
 }
-
-populateDropdown("localization", Localizations);
-populateDropdown("tumorGrade", TumorGrade);
-populateDropdown("tnmStage", TnmStage);

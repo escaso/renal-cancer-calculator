@@ -1,8 +1,12 @@
-import * from './variables.js';
+import { Localizations, TumorGrade, TnmStage, Groups, populateDropdown } from './variables.js';
+// function calculate(localization: Localizations, ): Groups{
+//     return value1 * value2 + value3;
+// }
 
-function calculate(localization: Localizations, ): Groups{
-    return value1 * value2 + value3;
-}
+
+populateDropdown("localization", Localizations);
+populateDropdown("tumorGrade", TumorGrade);
+populateDropdown("tnmStage", TnmStage);
 
 
 document.getElementById("submit").addEventListener("click", function() {
