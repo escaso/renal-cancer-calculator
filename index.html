@@ -14,24 +14,27 @@
 
     <main class="calculator">
 
-        <h1>My Calculator</h1>
+        <h1>Renal Cancer Calculator</h1>
+
+        <select id="Localization"></select>
+
+        <select id="Tumor Grade"></select>
+
+        <select id="TNM Stage"></select>
 
         <input
-            id="value1"
+            id="Age"
             type="number"
-            placeholder="Value 1"
+            placeholder="Age"
         >
 
         <input
-            id="value2"
+            id="Sarcomatoidal Diff"
             type="number"
-            placeholder="Value 2"
-        >
-
-        <input
-            id="value3"
-            type="number"
-            placeholder="Value 3"
+            step="any"
+            min="0"
+            max="1"
+            placeholder="Sarcomatoidal Diff (between 0 and 1)"
         >
 
         <button id="submit">
