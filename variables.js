@@ -1,11 +1,11 @@
-const Localizations = Object.freeze({
+export const Localizations = Object.freeze({
     IN_SITU : "In situ",
     LOCALIZED : "Localized",
     REGIONAL : "Regional",
     DISTANT : "Distant"
 })
 
-const Groups = Object.freeze({
+export const Groups = Object.freeze({
     GROUP_1 : {name: "Group 1", n: 37},
     GROUP_2 : {name: "Group 2", n: 537},
     GROUP_3 : {name: "Group 3", n: 33},
@@ -23,21 +23,21 @@ const Groups = Object.freeze({
     GROUP_15 : {name: "Group 15", n: 377},
 })
 
-const TumorGrade = Object.freeze({
+export const TumorGrade = Object.freeze({
     G1 : "G1",
     G2 : "G2",
     G3 : "G3",
     G4 : "G4"
 })
 
-const TnmStage = Object.freeze({
+export const TnmStage = Object.freeze({
     T1 : "T1",
     T2 : "T2",
     T3 : "T3",
     T4 : "T4"
 })
 
-function populateDropdown(selectId, enumOptions){
+export function populateDropdown(selectId, enumOptions){
     const select = document.getElementById(selectId);
 
     for (const key in enumOptions) {
