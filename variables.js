@@ -5,22 +5,103 @@ export const Localizations = Object.freeze({
     DISTANT : "Distant"
 })
 
+export const RiskLevels = Object.freeze({
+    LOW: "Low",
+    INTERMEDIATE: "Intermediate",
+    HIGH: "High"
+})
+
 export const Groups = Object.freeze({
-    GROUP_1 : {name: "Group 1", n: 37},
-    GROUP_2 : {name: "Group 2", n: 537},
-    GROUP_3 : {name: "Group 3", n: 33},
-    GROUP_4 : {name: "Group 4", n: 1281},
-    GROUP_5 : {name: "Group 5", n: 521},
-    GROUP_6 : {name: "Group 6", n: 115},
-    GROUP_7 : {name: "Group 7", n: 789},
-    GROUP_8 : {name: "Group 8", n: 30107},
-    GROUP_9 : {name: "Group 9", n: 7699},
-    GROUP_10 : {name: "Group 10", n: 7247},
-    GROUP_11 : {name: "Group 11", n: 417},
-    GROUP_12 : {name: "Group 12", n: 1450},
-    GROUP_13 : {name: "Group 13", n: 490},
-    GROUP_14 : {name: "Group 14", n: 1917},
-    GROUP_15 : {name: "Group 15", n: 377},
+    GROUP_1 : {name: "Group 1",
+                risk: RiskLevels.LOW,
+                meanSurvival: 81,
+                medianSurvival: null,
+                ci: null
+            },
+    GROUP_2 : {name: "Group 2",
+                risk: RiskLevels.INTERMEDIATE,
+                meanSurvival: 57,
+                medianSurvival: null,
+                ci: {lower:70, upper:null}
+            },
+    GROUP_3 : {name: "Group 3",
+                risk: RiskLevels.HIGH,
+                meanSurvival: 26.4,
+                medianSurvival: 22,
+                ci: {lower:16, upper:null}
+            },
+    GROUP_4 : {name: "Group 4",
+                risk: RiskLevels.HIGH,
+                meanSurvival: 44.7,
+                medianSurvival: 38,
+                ci: {lower:34, upper:43}
+            },
+    GROUP_5 : {name: "Group 5",
+                risk: RiskLevels.HIGH,
+                meanSurvival: 30.6,
+                medianSurvival: 17,
+                ci: {lower:14, upper:22}
+            },
+    GROUP_6 : {name: "Group 6",
+                risk: RiskLevels.HIGH,
+                meanSurvival: 44.7,
+                medianSurvival: 36,
+                ci: {lower:30, upper:null}
+            },
+    GROUP_7 : {name: "Group 7",
+                risk: RiskLevels.HIGH,
+                meanSurvival: 23.6,
+                medianSurvival: 13,
+                ci: {lower:11, upper:14}
+            },
+    GROUP_8 : {name: "Group 8",
+                risk: RiskLevels.LOW,
+                meanSurvival: 81.3,
+                medianSurvival: null,
+                ci: null
+            },
+    GROUP_9 : {name: "Group 9",
+                risk: RiskLevels.LOW,
+                meanSurvival: 77.9,
+                medianSurvival: null,
+                ci: null
+            },
+    GROUP_10 : {name: "Group 10",
+                risk: RiskLevels.LOW,
+                meanSurvival: 73.9,
+                medianSurvival: null,
+                ci: null
+            },
+    GROUP_11 : {name: "Group 11",
+                risk: RiskLevels.INTERMEDIATE,
+                meanSurvival: 49.7,
+                medianSurvival: 54,
+                ci: {lower:42, upper:null}
+            },
+    GROUP_12 : {name: "Group 12",
+                risk: RiskLevels.LOW,
+                meanSurvival: 74.4,
+                medianSurvival: null,
+                ci: null
+            },
+    GROUP_13 : {name: "Group 13",
+                risk: RiskLevels.INTERMEDIATE,
+                meanSurvival: 62.4,
+                medianSurvival: null,
+                ci: null
+            },
+    GROUP_14 : {name: "Group 14",
+                risk: RiskLevels.INTERMEDIATE,
+                meanSurvival: 59.7,
+                medianSurvival: null,
+                ci: null
+            },
+    GROUP_15 : {name: "Group 15",
+                risk: RiskLevels.HIGH,
+                meanSurvival: 37.8,
+                medianSurvival: 25,
+                ci: {lower:22, upper:32}
+            },
 })
 
 export const TumorGrade = Object.freeze({
