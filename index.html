@@ -4,58 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>My Calculator</title>
+    <title>ccRCC-CSS Tree</title>
 
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="/renal-cancer-calculator/icons/ios-180.png">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:wght@600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
+    <header class="site-header">
+        <div class="header-inner">
+            <img class="header-logo" src="/renal-cancer-calculator/icons/ios-180.png" alt="App icon" onerror="this.style.display='none'">
+            <span class="header-title">Renal Cancer Calculator</span>
+        </div>
+    </header>
+
+
     <main class="calculator">
 
-        <h1>Renal Cancer Calculator</h1>
+        <div class="form-card">
+            <h1>Risk Group Assessment</h1>
+            <p class="subtitle">Complete all fields to calculate the patient's prognostic group.</p>
 
-        <label for="localization">Localization</label>
-        <select id="localization"></select>
+        <div class="field-group">
+                <label for="localization">Localization</label>
+                <select id="localization"></select>
+            </div>
+ 
+            <div class="field-group">
+                <label for="tumorGrade">Tumor Grade</label>
+                <select id="tumorGrade"></select>
+            </div>
+ 
+            <div class="field-group">
+                <label for="tStage">T Stage</label>
+                <select id="tStage"></select>
+            </div>
+ 
+            <div class="field-group">
+                <label for="nStage">N Stage</label>
+                <select id="nStage"></select>
+            </div>
+ 
+            <div class="field-group">
+                <label for="sarcomDiff">Sarcomatoidal Differentiation</label>
+                <select id="sarcomDiff"></select>
+            </div>
+ 
+            <div class="field-group">
+                <label for="age">Age</label>
+                <input
+                    id="age"
+                    type="number"
+                    placeholder="Enter patient age"
+                    min="0"
+                    max="120"
+                >
+            </div>
 
-        <label for="tumorGrade">Tumor Grade</label>
-        <select id="tumorGrade"></select>
-
-        <label for="tnmStage">TNM Stage</label>
-        <select id="tnmStage"></select>
-
-        <label for="nStage">N Stage</label>
-        <select id="nStage"></select>
-
-        <label for="age">Age</label>
-        <input
-            id="age"
-            type="number"
-            placeholder="Age"
-        >
-
-        <label for="sarcomDiff">Sarcomatoidal Difference</label>
-        <input
-            id="sarcomDiff"
-            type="number"
-            step="any"
-            min="0"
-            max="1"
-            placeholder="between 0 and 1"
-        >
-
-        <button id="submit">
-            Submit
-        </button>
-
-        <p id="error"></p>
-
-        <p id="result"></p>
-
+            <p id="error" role="alert"></p>
+ 
+            <button id="submit">Calculate Risk Group</button>
+ 
+            <p id="result"></p>
+        </div>
     </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p class="footer-text">Your institution or disclaimer text goes here.</p>
+        </div>
+    </footer>
 
     <script src="app.js" type="module"></script>
 

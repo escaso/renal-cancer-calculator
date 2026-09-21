@@ -5,6 +5,30 @@ export const Localizations = Object.freeze({
     DISTANT : "Distant"
 })
 
+export const TumorGrade = Object.freeze({
+    G1 : "G1",
+    G2 : "G2",
+    G3 : "G3",
+    G4 : "G4"
+})
+
+export const TStage = Object.freeze({
+    T1 : "T1",
+    T2 : "T2",
+    T3 : "T3",
+    T4 : "T4"
+})
+
+export const NStage = Object.freeze({
+    POS : "+",
+    NEG : "-"
+})
+
+export const SarcomDiff = Object.freeze({
+    YES: "Yes",
+    NO: "No"
+})
+
 export const RiskLevels = Object.freeze({
     LOW: "Low",
     INTERMEDIATE: "Intermediate",
@@ -104,24 +128,6 @@ export const Groups = Object.freeze({
             },
 })
 
-export const TumorGrade = Object.freeze({
-    G1 : "G1",
-    G2 : "G2",
-    G3 : "G3",
-    G4 : "G4"
-})
-
-export const TnmStage = Object.freeze({
-    T1 : "T1",
-    T2 : "T2",
-    T3 : "T3",
-    T4 : "T4"
-})
-
-export const NStage = Object.freeze({
-    POS : "+",
-    NEG : "-"
-})
 
 export function populateDropdown(selectId, enumOptions){
     const select = document.getElementById(selectId);
