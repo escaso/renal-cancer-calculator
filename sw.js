@@ -1,7 +1,25 @@
 // Network first: always get the latest files when online, use the cache only when offline.
 const CACHE = "renal-calc";
 
-self.addEventListener("install", () => self.skipWaiting());
+// Saved on the first visit so the app works offline straight away.
+// Add any new file the page needs to this list.
+const FILES = [
+    "./",
+    "index.html",
+    "style.css",
+    "app.js",
+    "calculate.js",
+    "variables.js",
+    "manifest.json",
+    "icons/ios-180.png",
+    "icons/icon-192.png",
+    "icons/icon-512.png"
+];
+
+self.addEventListener("install", e => {
+    self.skipWaiting();
+    e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)));
+});
 
 self.addEventListener("activate", e => {
     // remove caches left by older versions of this file
