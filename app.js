@@ -24,19 +24,22 @@ document.getElementById("submit").addEventListener("click", () => {
     const [localization, grade, sarcomatoid, n, age, t] = fields;
     const g = calculate(localization, grade, sarcomatoid, n, Number(age), t);
 
-    let html = `<h2>${g.name}: <span class="risk-${g.risk.toLowerCase()}">${g.risk} risk</span></h2>`;
-    if (g.meanSurvival != null) {
-        html += `<p>Cancer-specific survival (mean)<br><strong>${yearsMonths(g.meanSurvival)}</strong></p>`;
-    }
-    html += g.medianSurvival == null
-        ? `<p>Median survival: not reached</p>`
-        : `<p>Median survival: ${g.medianSurvival} months</p>`;
-    if (g.ci) {
-        html += `<p>CI ${ciValue(g.ci.lower)} – ${ciValue(g.ci.upper)}</p>`;
-    }
+    const icon = g.risk === "Low" ? "✓" : "!";
+    let html = `
+        <div class="icon">${icon}</div>
+        <p class="group">${g.name}</p>
+        <h2>${g.risk} risk</h2>`;
+    const row = (label, value) => `<div><dt>${label}</dt><dd>${value}</dd></div>`;
+    html += "<dl>";
+    if (g.meanSurvival != null) html += row("Cancer-specific survival (mean)", yearsMonths(g.meanSurvival));
+    html += row("Median survival", g.medianSurvival == null ? "Not reached" : `${g.medianSurvival} months`);
+    if (g.ci) html += row("CI", `${ciValue(g.ci.lower)} – ${ciValue(g.ci.upper)}`);
+    html += "</dl>";
 
+    const dialog = document.getElementById("result");
+    dialog.className = `risk-${g.risk.toLowerCase()}`;
     document.getElementById("resultContent").innerHTML = html;
-    document.getElementById("result").showModal();
+    dialog.showModal();
 });
 
 // 26.4 months -> "2 years and 2 months"
