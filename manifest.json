@@ -5,7 +5,7 @@
   "scope": "/renal-cancer-calculator/",
   "display": "standalone",
   "background_color": "#f5f5f5",
-  "theme_color": "#f5f5f5",
+  "theme_color": "#2563a8",
   "icons": [
     { "src": "/renal-cancer-calculator/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "/renal-cancer-calculator/icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
