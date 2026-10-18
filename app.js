@@ -68,7 +68,7 @@ document.getElementById("submit").addEventListener("click", () => {
     const [localization, grade, sarcomatoid, n, age, t] = fields;
     const g = calculate(localization, grade, sarcomatoid, n, Number(age), t);
 
-    let html = `<h2>${g.name}: ${g.risk} risk</h2>`;
+    let html = `<h2>${g.name}: <span class="risk-${g.risk.toLowerCase()}">${g.risk} risk</span></h2>`;
     if (g.meanSurvival != null) {
         html += `<p>Cancer-specific survival (mean)<br><strong>${yearsMonths(g.meanSurvival)}</strong></p>`;
     }

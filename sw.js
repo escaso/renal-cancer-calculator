@@ -1,5 +1,5 @@
 // Bump this version whenever you change any file, or users will keep seeing the old cached version.
-const CACHE = "renal-calc-v7";
+const CACHE = "renal-calc-v9";
 const ASSETS = [
     "./",
     "index.html",
