@@ -132,16 +132,8 @@ export const Groups = Object.freeze({
 export function populateDropdown(selectId, enumOptions){
     const select = document.getElementById(selectId);
 
-    const defaultOption = document.createElement("option");
-    defaultOption.value = "";
-    defaultOption.textContent = "-- Select one --";
-    select.appendChild(defaultOption);
-
-    for (const key in enumOptions) {
-        const option = document.createElement("option");
-        const value = enumOptions[key];
-        option.value = typeof value === "object" ? key : value;
-        option.textContent = typeof value === "object" ? value.name : value;
-        select.appendChild(option);
+    select.add(new Option("-- Select --", ""));
+    for (const value of Object.values(enumOptions)) {
+        select.add(new Option(value, value));
     }
 }

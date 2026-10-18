@@ -53,29 +53,30 @@ populateDropdown("nStage", NStage);
 populateDropdown("sarcomDiff", SarcomDiff);
 
 
-document.getElementById("submit").addEventListener("click", () => {
-    const localization = document.getElementById("localization").value;
-    const grade = document.getElementById("tumorGrade").value;
-    const sarcomatoid = document.getElementById("sarcomDiff").value;
-    const n = document.getElementById("nStage").value;
-    const age = document.getElementById("age").value;
-    const t = document.getElementById("tStage").value;
+const val = id => document.getElementById(id).value;
 
-    // validate all fields are filled
-    if (!localization || !grade || !sarcomatoid || !n || !age || !t) {
-        document.getElementById("error").textContent = "Please fill in all fields.";
+document.getElementById("submit").addEventListener("click", () => {
+    const fields = ["localization", "tumorGrade", "sarcomDiff", "nStage", "age", "tStage"].map(val);
+    const error = document.getElementById("error");
+    const result = document.getElementById("result");
+
+    if (fields.some(v => v === "")) {
+        error.textContent = "Please fill in all fields.";
+        result.innerHTML = "";
         return;
     }
+    error.textContent = "";
 
-    const resultGroup = calculate(localization, grade, sarcomatoid, n, age, t);
+    const [localization, grade, sarcomatoid, n, age, t] = fields;
+    const g = calculate(localization, grade, sarcomatoid, n, Number(age), t);
 
-    // hide the form, show the result
-    document.querySelector(".calculator").innerHTML = `
-        <h1>Result</h1>
-        <p style="text-align:center; font-size: 20px;">${resultGroup.name}</p>
-        <p style="text-align:center; color: #555;">n = ${resultGroup.n}</p>
-        <p style="text-align:center; color: #555;">Your description text here</p>
-        <button onclick="location.reload()">Start Over</button>
+    const median = g.medianSurvival == null
+        ? "not reached"
+        : `${g.medianSurvival}` + (g.ci ? ` (95% CI ${g.ci.lower}–${g.ci.upper ?? "NR"})` : "");
+
+    result.innerHTML = `
+        <h2>${g.name}: ${g.risk} risk</h2>
+        <p>Mean survival: ${g.meanSurvival}<br>Median survival: ${median}</p>
     `;
 });
 
