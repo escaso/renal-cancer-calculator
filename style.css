@@ -1,9 +1,10 @@
 /* One palette for the whole app */
 :root {
-    --blue: #2563a8;   /* header, footer, buttons */
+    --blue: #2563a8;   /* header, footer */
     --text: #1f2937;   /* values and main text */
     --muted: #5b6573;  /* every label */
     --line: #d5dbe3;   /* borders and dividers */
+    --teal: #1d7a8c;
     --radius: 6px;
 }
 
@@ -93,7 +94,7 @@ select, input {
 
 button {
     margin-top: 8px;
-    background: var(--blue);
+    background: var(--teal);
     color: #fff;
     font-weight: 600;
     border: none;
