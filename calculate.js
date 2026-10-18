@@ -1,6 +1,13 @@
 import { Localizations, TumorGrade, TStage, NStage, Groups, SarcomDiff } from './variables.js';
 
+export const MIN_AGE = 0;
+export const MAX_AGE = 130;
+
 export function calculate(localization, grade, sarcomatoid, n, age, t){
+    if (typeof age !== "number" || Number.isNaN(age) || age < MIN_AGE || age > MAX_AGE) {
+        throw new RangeError(`Age must be a number between ${MIN_AGE} and ${MAX_AGE}.`);
+    }
+
     if (localization == Localizations.DISTANT){
         if (grade == TumorGrade.G1 || grade ==TumorGrade.G2){
             if (sarcomatoid == SarcomDiff.YES){

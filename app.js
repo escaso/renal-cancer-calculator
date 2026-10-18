@@ -15,18 +15,28 @@ document.getElementById("submit").addEventListener("click", () => {
     const fields = ["localization", "tumorGrade", "sarcomDiff", "nStage", "age", "tStage"].map(val);
     const error = document.getElementById("error");
 
+    // text the browser can't read as a number (e.g. "--5") arrives as ""
+    if (document.getElementById("age").validity.badInput) {
+        error.textContent = "Please enter a valid age.";
+        return;
+    }
     if (fields.some(v => v === "")) {
         error.textContent = "Please fill in all fields.";
         return;
     }
-    error.textContent = "";
 
     const [localization, grade, sarcomatoid, n, age, t] = fields;
-    const g = calculate(localization, grade, sarcomatoid, n, Number(age), t);
+    let g;
+    try {
+        g = calculate(localization, grade, sarcomatoid, n, Number(age), t);
+    } catch (e) {
+        error.textContent = e.message; // e.g. "Age must be a number between 0 and 130."
+        return;
+    }
+    error.textContent = "";
 
-    const icon = g.risk === "Low" ? "✓" : "!";
     let html = `
-        <div class="icon">${icon}</div>
+        ${g.risk === "Low" ? ICONS.tick : ICONS.alert}
         <p class="group">${g.name}</p>
         <h2>${g.risk} risk</h2>`;
     const row = (label, value) => `<div><dt>${label}</dt><dd>${value}</dd></div>`;
@@ -41,6 +51,19 @@ document.getElementById("submit").addEventListener("click", () => {
     document.getElementById("resultContent").innerHTML = html;
     dialog.showModal();
 });
+
+// Result icons: white symbol with thick rounded strokes on a circle in the risk color
+const ICONS = {
+    tick: `<svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
+        <circle cx="24" cy="24" r="24" fill="currentColor"/>
+        <path d="M14 25l7 7 13-14" fill="none" stroke="#fff" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`,
+    alert: `<svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
+        <circle cx="24" cy="24" r="24" fill="currentColor"/>
+        <path d="M24 13v14" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
+        <circle cx="24" cy="35" r="3.25" fill="#fff"/>
+    </svg>`
+};
 
 // 26.4 months -> "2 years and 2 months"
 function yearsMonths(totalMonths) {

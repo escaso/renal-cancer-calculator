@@ -120,15 +120,11 @@ dialog {
 dialog::backdrop { background: rgb(0 0 0 / 0.5); }
 
 dialog .icon {
-    width: 48px;
-    height: 48px;
+    display: block;
+    width: 52px;
+    height: 52px;
     margin: 0 auto 12px;
-    border-radius: 50%;
-    border: 3px solid var(--risk);
     color: var(--risk);
-    font-size: 26px;
-    font-weight: 600;
-    line-height: 42px;
 }
 
 dialog .group {
@@ -154,6 +150,7 @@ dialog dl {
 dialog dl div {
     display: flex;
     justify-content: space-between;
+    align-items: center; 
     gap: 16px;
     padding: 12px 0;
     border-bottom: 1px solid var(--line);
