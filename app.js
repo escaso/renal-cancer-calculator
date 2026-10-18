@@ -58,11 +58,9 @@ const val = id => document.getElementById(id).value;
 document.getElementById("submit").addEventListener("click", () => {
     const fields = ["localization", "tumorGrade", "sarcomDiff", "nStage", "age", "tStage"].map(val);
     const error = document.getElementById("error");
-    const result = document.getElementById("result");
 
     if (fields.some(v => v === "")) {
         error.textContent = "Please fill in all fields.";
-        result.innerHTML = "";
         return;
     }
     error.textContent = "";
@@ -70,16 +68,37 @@ document.getElementById("submit").addEventListener("click", () => {
     const [localization, grade, sarcomatoid, n, age, t] = fields;
     const g = calculate(localization, grade, sarcomatoid, n, Number(age), t);
 
-    const median = g.medianSurvival == null
-        ? "not reached"
-        : `${g.medianSurvival}` + (g.ci ? ` (95% CI ${g.ci.lower}–${g.ci.upper ?? "NR"})` : "");
+    let html = `<h2>${g.name}: ${g.risk} risk</h2>`;
+    if (g.meanSurvival != null) {
+        html += `<p>Cancer-specific survival (mean)<br><strong>${yearsMonths(g.meanSurvival)}</strong></p>`;
+    }
+    html += g.medianSurvival == null
+        ? `<p>Median survival: not reached</p>`
+        : `<p>Median survival: ${g.medianSurvival} months</p>`;
+    if (g.ci) {
+        html += `<p>CI ${ciValue(g.ci.lower)} – ${ciValue(g.ci.upper)}</p>`;
+    }
 
-    result.innerHTML = `
-        <h2>${g.name}: ${g.risk} risk</h2>
-        <p>Mean survival: ${g.meanSurvival}<br>Median survival: ${median}</p>
-    `;
+    document.getElementById("resultContent").innerHTML = html;
+    document.getElementById("result").showModal();
 });
 
+// 26.4 months -> "2 years and 2 months"
+function yearsMonths(totalMonths) {
+    const rounded = Math.round(totalMonths);
+    const years = Math.floor(rounded / 12);
+    const months = rounded % 12;
+    const parts = [];
+    if (years) parts.push(`${years} ${years === 1 ? "year" : "years"}`);
+    if (months || !years) parts.push(`${months} ${months === 1 ? "month" : "months"}`);
+    return parts.join(" and ");
+}
+
+// null = not estimable
+function ciValue(v) {
+    return v == null ? "NE" : v.toFixed(1);
+}
+
 if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/renal-cancer-calculator/sw.js");
+    navigator.serviceWorker.register("sw.js");
 }

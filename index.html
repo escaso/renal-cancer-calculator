@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="icons/ios-180.png">
-    <link rel="icon" href="icons/icon-512.png">
+    <link rel="icon" href="icons/icon-192.png">
 </head>
 <body>
     <header>
@@ -27,8 +27,12 @@
 
         <button id="submit">Calculate</button>
         <p id="error" role="alert"></p>
-        <div id="result"></div>
     </main>
+
+    <dialog id="result">
+        <div id="resultContent"></div>
+        <form method="dialog"><button>Close</button></form>
+    </dialog>
 
     <footer>
         <p>Decision Tree model: Laura Martínez Cayuelas</p>

@@ -1,13 +1,13 @@
 // Bump this version whenever you change any file, or users will keep seeing the old cached version.
-const CACHE = "renal-calc-v4";
+const CACHE = "renal-calc-v7";
 const ASSETS = [
-    "/renal-cancer-calculator/",
-    "/renal-cancer-calculator/index.html",
-    "/renal-cancer-calculator/style.css",
-    "/renal-cancer-calculator/app.js",
-    "/renal-cancer-calculator/variables.js",
-    "/renal-cancer-calculator/manifest.json",
-    "/renal-cancer-calculator/icons/ios-180.png"
+    "./",
+    "index.html",
+    "style.css",
+    "app.js",
+    "variables.js",
+    "manifest.json",
+    "icons/ios-180.png"
 ];
 
 self.addEventListener("install", e => {

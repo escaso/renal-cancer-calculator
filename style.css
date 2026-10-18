@@ -57,6 +57,17 @@ button {
 
 #error { color: #c0392b; }
 
+dialog {
+    width: min(90vw, 380px);
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+}
+
+dialog::backdrop { background: rgb(0 0 0 / 0.5); }
+
+dialog h2 { color: #2563a8; }
+
 footer {
     text-align: center;
     font-size: 13px;
